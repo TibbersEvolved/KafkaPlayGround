@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Random;
 
 @Service
-public class DemoService {
+public class GreetingService {
 
     private List<String> phrases;
     private Random random;
 
-    public DemoService() {
+    public GreetingService() {
         phrases = new ArrayList<>();
         phrases.add("Hello World");
         phrases.add("How are you?");

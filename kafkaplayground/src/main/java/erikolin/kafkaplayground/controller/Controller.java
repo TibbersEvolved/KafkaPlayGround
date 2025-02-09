@@ -2,12 +2,11 @@ package erikolin.kafkaplayground.controller;
 
 
 import erikolin.kafkaplayground.model.Greeting;
-import erikolin.kafkaplayground.service.DemoService;
+import erikolin.kafkaplayground.service.GreetingService;
 import erikolin.kafkaplayground.web.DemoResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Time;
 import java.time.LocalDateTime;
 
 @RestController
@@ -15,15 +14,15 @@ import java.time.LocalDateTime;
 @CrossOrigin
 public class Controller {
 
-    private DemoService demoService;
+    private GreetingService greetingService;
 
-    public Controller(DemoService demoService) {
-        this.demoService = demoService;
+    public Controller(GreetingService greetingService) {
+        this.greetingService = greetingService;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DemoResponse> sayHello(@PathVariable String id) {
-        Greeting greeting = demoService.greetUser(id);
+    public ResponseEntity<DemoResponse> greetUser(@PathVariable String id) {
+        Greeting greeting = greetingService.greetUser(id);
         return ResponseEntity.ok(new DemoResponse(greeting.getMessage(), greeting.getUser(), LocalDateTime.now().toString()));
     }
 
