@@ -13,7 +13,7 @@ export default function Logitem(props : prop) {
         }
     return (
         <>
-        <section className={"flex gap-2 " + txt}>
+        <section className={"flex gap-2 rounded-md p-1 " + txt}>
         <div >{props.name}</div>
         <div>||</div>
         <div>Status: {props.code}</div>
