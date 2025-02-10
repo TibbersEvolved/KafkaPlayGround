@@ -11,14 +11,21 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as AboutImport } from './routes/about'
+import { Route as LogsImport } from './routes/logs'
+import { Route as HealthcareImport } from './routes/healthcare'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
 
-const AboutRoute = AboutImport.update({
-  id: '/about',
-  path: '/about',
+const LogsRoute = LogsImport.update({
+  id: '/logs',
+  path: '/logs',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const HealthcareRoute = HealthcareImport.update({
+  id: '/healthcare',
+  path: '/healthcare',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -39,11 +46,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutImport
+    '/healthcare': {
+      id: '/healthcare'
+      path: '/healthcare'
+      fullPath: '/healthcare'
+      preLoaderRoute: typeof HealthcareImport
+      parentRoute: typeof rootRoute
+    }
+    '/logs': {
+      id: '/logs'
+      path: '/logs'
+      fullPath: '/logs'
+      preLoaderRoute: typeof LogsImport
       parentRoute: typeof rootRoute
     }
   }
@@ -53,37 +67,42 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/healthcare': typeof HealthcareRoute
+  '/logs': typeof LogsRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/healthcare': typeof HealthcareRoute
+  '/logs': typeof LogsRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/healthcare': typeof HealthcareRoute
+  '/logs': typeof LogsRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths: '/' | '/healthcare' | '/logs'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to: '/' | '/healthcare' | '/logs'
+  id: '__root__' | '/' | '/healthcare' | '/logs'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
+  HealthcareRoute: typeof HealthcareRoute
+  LogsRoute: typeof LogsRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
+  HealthcareRoute: HealthcareRoute,
+  LogsRoute: LogsRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +116,18 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/about"
+        "/healthcare",
+        "/logs"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/about": {
-      "filePath": "about.tsx"
+    "/healthcare": {
+      "filePath": "healthcare.tsx"
+    },
+    "/logs": {
+      "filePath": "logs.tsx"
     }
   }
 }
