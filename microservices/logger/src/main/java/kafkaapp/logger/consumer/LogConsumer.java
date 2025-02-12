@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class LogConsumer {
 
-    private final LogService logservice;
+    private final LogService logService;
 
     public LogConsumer(LogService logservice) {
-        this.logservice = logservice;
+        this.logService = logservice;
     }
 }
