@@ -8,4 +8,8 @@ public record LogDto(UUID id, String message, int statusCode, LocalDateTime time
     public LogItem buildFromModel() {
         return new LogItem(id, message, statusCode, timestamp, serviceName);
     }
+
+    public static LogDto fromModel(LogItem logItem) {
+        return new LogDto(logItem.getId(), logItem.getMessage(), logItem.getStatusCode(), logItem.getTimestamp(), logItem.getServiceName());
+    }
 }

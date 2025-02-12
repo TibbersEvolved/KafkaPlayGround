@@ -22,4 +22,8 @@ public class LogService {
     public List<LogItem> getLogsByServiceName(String serviceName) {
         return logRepository.getLogItemsByService(serviceName);
     }
+
+    public void add(LogItem logItem) {
+        logRepository.add(logItem);
+    }
 }
