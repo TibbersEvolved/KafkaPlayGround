@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: Logger App
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
+server:
+  port: 8090

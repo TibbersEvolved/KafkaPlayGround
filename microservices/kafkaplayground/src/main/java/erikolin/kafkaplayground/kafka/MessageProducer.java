@@ -2,6 +2,7 @@ package erikolin.kafkaplayground.kafka;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import erikolin.kafkaplayground.model.Greeting;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -22,6 +23,8 @@ public class MessageProducer {
         this.template = template;
         this.mapper = new ObjectMapper();
         this.topic = topic;
+        mapper.registerModule(new JavaTimeModule());
+
     }
 
     public void send(Greeting greeting) throws JsonProcessingException {
