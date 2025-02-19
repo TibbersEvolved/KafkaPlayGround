@@ -27,7 +27,7 @@ public class LogConsumer {
         String message = record.value();
         System.out.println("message = " + message);
         try {
-            LogDto logDto = objectMapper.convertValue(message, LogDto.class);
+            LogDto logDto = objectMapper.readValue(message, LogDto.class);
             logService.add(LogItem.fromDto(logDto));
         } catch (Exception e) {
             logService.add(LogItem.errorLog(e.getMessage()));

@@ -1,8 +1,12 @@
 package kafkaapp.logger.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record LogDto(UUID id, String message, int statusCode, LocalDateTime timestamp, String serviceName) {
 
     public LogItem buildFromModel() {
