@@ -18,7 +18,7 @@ export default function Logitem(props : prop) {
     if(selectId == false)
     return (
         <>
-        <section className={"flex gap-2 rounded-md p-1 ml-2 mr-2 " + txt} onClick={() => setSelectId(true)}>
+        <section className={"flex gap-2 rounded-md p-1 ml-2 mr-2 font-light " + txt} onClick={() => setSelectId(true)}>
         <div >{props.item.serviceName}</div>
         <div>||</div>
         <div>Status: {props.item.statusCode}</div>
@@ -29,7 +29,7 @@ export default function Logitem(props : prop) {
     )
     return(
         <>
-        <section className={"flex flex-wrap gap-2 rounded-md p-1 ml-2 mr-2 " + txt} onClick={() => setSelectId(false)}>
+        <section className={"flex flex-wrap gap-2 rounded-md p-1 ml-2 mr-2 font-bold " + txt} onClick={() => setSelectId(false)}>
         <div >{props.item.serviceName}</div>
         <div>||</div>
         <div>Status: {props.item.statusCode}</div>
