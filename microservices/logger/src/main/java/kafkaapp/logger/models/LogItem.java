@@ -19,6 +19,20 @@ public class LogItem {
         this.serviceName = serviceName;
     }
 
+    public static LogItem fromDto(LogDto dto) {
+        return new LogItem(
+                dto.id(),
+                dto.message(),
+                dto.statusCode(),
+                dto.timestamp(),
+                dto.serviceName()
+        );
+    }
+
+    public static LogItem errorLog(String message) {
+        return new LogItem(UUID.randomUUID(), message, 500, LocalDateTime.now(), "Error");
+    }
+
     public UUID getId() {
         return id;
     }
