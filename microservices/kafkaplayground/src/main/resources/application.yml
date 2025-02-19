@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: KafkaGreeter
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
