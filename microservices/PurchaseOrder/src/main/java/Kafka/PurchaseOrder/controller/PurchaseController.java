@@ -28,12 +28,12 @@ public class PurchaseController {
     }
 
     @PostMapping("/purchases")
-    public void processPurchaseOrder(@RequestBody PurchaseOrderDto purchaseOrderDto) {
-
+    public void processPurchaseOrder(@RequestBody PurchaseOrderDto purchaseOrderDto) throws JsonProcessingException {
+        purchaseService.handlePurchase(purchaseOrderDto);
     }
 
     @GetMapping("/test")
     public void test() throws JsonProcessingException {
-        loggingService.log("Testing", 204);
+
     }
 }
