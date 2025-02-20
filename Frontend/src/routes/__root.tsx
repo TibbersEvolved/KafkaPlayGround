@@ -13,7 +13,7 @@ function RootComponent() {
   return (
     <>
     <QueryClientProvider client={queryClient}>
-      <div className="p-2 flex gap-2 text-lg">
+      <div className="p-2 flex gap-2 text-lg bg-slate-500">
         <Link
           to="/"
           activeProps={{

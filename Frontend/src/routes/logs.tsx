@@ -8,7 +8,7 @@ export const Route = createFileRoute('/logs')({
 
 function AboutComponent() {
   return (
-    <div className="p-2">
+    <div className="p-2 bg-slate-300">
       <h3>Logs</h3>
       <Logui/>
     </div>

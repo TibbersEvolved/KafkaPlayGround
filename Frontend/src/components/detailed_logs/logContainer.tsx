@@ -17,11 +17,11 @@ export default function LogContainer() {
       return (
         <>
         <section>
-          <header className="flex gap-5 pb-2">
-        <div>Results:</div>
+          <header className="flex gap-5 mb-2 p-0.5 border-solid border-sky-900 border-2 bg-slate-100">
+        <div>Filter:</div>
         <LogSelectService/>
         </header>
-        <div className="flex flex-col gap-2 border-2 border-b-blue-950 p-4 rounded-md shadow-sm">
+        <div className="flex flex-col gap-2 border-2 border-b-blue-950 p-4 rounded-md shadow-sm bg-slate-100">
           {array.map((res, key) => {
             return <Logitem item={res} key={key}/>
           })}      

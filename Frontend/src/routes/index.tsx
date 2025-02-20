@@ -8,7 +8,7 @@ export const Route = createFileRoute('/')({
 
 function HomeComponent() {
   return (
-    <div className="p-2">
+    <div className="p-2 bg-slate-300">
       <h3>Launchpad!</h3>
       <Launchpad/>
     </div>

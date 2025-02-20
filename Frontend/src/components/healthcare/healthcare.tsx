@@ -6,7 +6,7 @@ const apiPlayground = "http://localhost:8080/api/ping"
 export default function Healthcare() {
     return (
         <>
-        <section className="border-sky-900 border-2 pb-10 ml-4 mr-4 mt-3 rounded-md shadow-md">
+        <section className="border-sky-900 border-2 pb-10 ml-4 mr-4 mt-3 rounded-md shadow-md bg-slate-100">
         <div className="flex justify-center">
         <header className="mb-5 text-2xl pt-2">App Health</header>
         </div>

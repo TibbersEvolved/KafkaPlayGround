@@ -14,7 +14,7 @@ export default function LogSelectService() {
       if (isError) return <div>Server Error</div>;
       console.log(data)
       return (<>
-      <select name="service" className="border-2 border-solid border-sky-900">
+      <select name="service" className="border-2 border-solid border-sky-900 rounded-md shadow-sm bg-amber-200">
       <option value="all">All</option>
       {
         data.services.map((res : string, key : number) => {
