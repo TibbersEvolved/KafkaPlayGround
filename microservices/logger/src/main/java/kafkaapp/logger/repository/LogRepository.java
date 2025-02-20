@@ -10,17 +10,19 @@ import java.util.List;
 public class LogRepository {
 
     private List<LogItem> logItems;
+    private LogDbRepo logDbRepo;
 
-    public LogRepository() {
+    public LogRepository(LogDbRepo logDbRepo) {
         this.logItems = new ArrayList<>();
+        this.logDbRepo = logDbRepo;
     }
 
     public void add(LogItem logItem) {
-        this.logItems.add(logItem);
+        logDbRepo.save(logItem);
     }
 
     public List<LogItem> getLogItems() {
-        return logItems;
+        return logDbRepo.findAll();
     }
 
     public List<LogItem> getLogItemsByService(String serviceName) {

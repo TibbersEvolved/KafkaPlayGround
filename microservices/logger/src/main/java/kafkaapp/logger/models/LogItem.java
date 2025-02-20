@@ -1,27 +1,37 @@
 package kafkaapp.logger.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
+@Entity
 public class LogItem {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String message;
     private int statusCode;
     private LocalDateTime timestamp;
     private String serviceName;
 
-    public LogItem(UUID id, String message, int statusCode, LocalDateTime timestamp, String serviceName) {
-        this.id = id;
+    public LogItem(String message, int statusCode, LocalDateTime timestamp, String serviceName) {
         this.message = message;
         this.statusCode = statusCode;
         this.timestamp = timestamp;
         this.serviceName = serviceName;
     }
 
+    public LogItem() {
+    }
+
     public static LogItem fromDto(LogDto dto) {
         return new LogItem(
-                dto.id(),
                 dto.message(),
                 dto.statusCode(),
                 dto.timestamp(),
@@ -30,7 +40,7 @@ public class LogItem {
     }
 
     public static LogItem errorLog(String message) {
-        return new LogItem(UUID.randomUUID(), message, 500, LocalDateTime.now(), "Error");
+        return new LogItem(message, 500, LocalDateTime.now(), "Error");
     }
 
     public UUID getId() {
