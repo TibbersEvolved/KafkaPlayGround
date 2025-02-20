@@ -4,10 +4,14 @@ package Kafka.PurchaseOrder.controller;
 import Kafka.PurchaseOrder.services.LoggingService;
 import Kafka.PurchaseOrder.services.PurchaseService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import models.CartItem;
+import models.Item;
 import models.PurchaseOrderDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -33,7 +37,11 @@ public class PurchaseController {
     }
 
     @GetMapping("/test")
-    public void test() throws JsonProcessingException {
-
+    public PurchaseOrderDto test() throws JsonProcessingException {
+        List<CartItem> items = new ArrayList<>();
+        items.add(new CartItem(new Item(20,"Cake","Baked Goods"), 6));
+        items.add(new CartItem(new Item(6,"Chocolate","Candy"), 6));
+        items.add(new CartItem(new Item(20,"Muffin","Baked Goods"), 12));
+        return new PurchaseOrderDto(items,"Erik");
     }
 }

@@ -2,10 +2,12 @@ package Kafka.PurchaseOrder.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import models.CartItem;
 import models.PurchaseOrderDto;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -22,9 +24,17 @@ public class PurchaseService {
     }
 
     public void handlePurchase(PurchaseOrderDto purchaseOrderDto) throws JsonProcessingException {
-        String log = "Registered purchase order for " + purchaseOrderDto.customerName() + " for items worth: " + purchaseOrderDto.getTotalCost();
+        String log = "Registered purchase order for " + purchaseOrderDto.customerName() + " for items worth: " + getTotalCost(purchaseOrderDto.cartItems());
         loggingService.log(log,200);
         String message = objectMapper.writeValueAsString(purchaseOrderDto);
         template.send("purchaseOrder", UUID.randomUUID().toString() ,message);
+    }
+
+    public float getTotalCost(List<CartItem> cartItems) {
+        float totalCost = 0;
+        for (CartItem cartItem : cartItems) {
+            totalCost += cartItem.quantity()*cartItem.item().cost();
+        }
+        return totalCost;
     }
 }
