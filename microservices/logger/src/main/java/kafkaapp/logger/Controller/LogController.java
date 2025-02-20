@@ -1,6 +1,7 @@
 package kafkaapp.logger.Controller;
 
 import kafkaapp.logger.models.LogDto;
+import kafkaapp.logger.models.LogDtoOutgoing;
 import kafkaapp.logger.models.LogItem;
 import kafkaapp.logger.service.LogService;
 import org.springframework.web.bind.annotation.*;
@@ -27,9 +28,9 @@ public class LogController {
     }
 
     @GetMapping()
-    public List<LogDto> getLogs() {
+    public List<LogDtoOutgoing> getLogs() {
         return logService.getLogs().stream()
-                .map(LogDto::fromModel)
+                .map(LogDtoOutgoing::fromModel)
                 .toList();
     }
 

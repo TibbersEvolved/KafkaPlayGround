@@ -6,7 +6,7 @@ import java.util.UUID;
 public record LogDtoOutgoing(UUID id, String message, int statusCode, String timestamp, String serviceName) {
 
     public static LogDtoOutgoing fromModel(LogItem logItem) {
-        return new LogDtoOutgoing(logItem.getId(), logItem.getMessage(), logItem.getStatusCode(), logItem.getTimestamp().toString(), logItem.getServiceName());
+        return new LogDtoOutgoing(logItem.getId(), logItem.getMessage(), logItem.getStatusCode(), formatTimestamp(logItem.getTimestamp()), logItem.getServiceName());
     }
 
     public static String formatTimestamp(LocalDateTime localDateTime) {
