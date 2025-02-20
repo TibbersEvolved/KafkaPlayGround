@@ -1,4 +1,4 @@
-package Kafka.PurchaseOrder.Kafka;
+package Kafka.PurchaseOrder.kafka;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
