@@ -28,9 +28,7 @@ public class LogRepository {
     }
 
     public List<LogItem> getLogItemsByService(String serviceName) {
-        return logItems.stream()
-                .filter(s -> s.getServiceName().equals(serviceName))
-                .toList();
+        return logDbRepo.findAllByServiceName(serviceName);
     }
 
     public List<String> getAllServiceNames() {
