@@ -7,11 +7,11 @@ const code400 = ""
 export default function Logitem(props : prop) {
     const [selectId, setSelectId] = useState(false);
     let txt = "bg-amber-100"
-    if(props.item.statusCode === 200)
+    if(props.item.statusCode >= 200 && props.item.statusCode < 300)
         {
             txt = "bg-green-400 hover:bg-green-200"
         }
-    if(props.item.statusCode === 400)
+    if((props.item.statusCode >= 400 && props.item.statusCode < 500))
         {
             txt = "bg-red-400 hover:bg-red-200"
         }
