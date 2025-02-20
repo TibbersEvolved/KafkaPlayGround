@@ -7,6 +7,7 @@ import kafkaapp.logger.service.LogService;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -34,10 +35,15 @@ public class LogController {
                 .toList();
     }
 
-    @GetMapping("/{serviceName}")
-    public List<LogDto> getLogsFromService(@PathVariable String serviceName) {
+    @GetMapping("/services/{serviceName}")
+    public List<LogDtoOutgoing> getLogsFromService(@PathVariable String serviceName) {
         return logService.getLogsByServiceName(serviceName).stream()
-                .map(LogDto::fromModel)
+                .map(LogDtoOutgoing::fromModel)
                 .toList();
+    }
+
+    @GetMapping("/services")
+    public List<String> getLogsFromServices() {
+        return logService.getServiceNames();
     }
 }
