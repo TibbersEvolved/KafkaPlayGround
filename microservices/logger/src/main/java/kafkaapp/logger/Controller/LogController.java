@@ -3,6 +3,7 @@ package kafkaapp.logger.Controller;
 import kafkaapp.logger.models.LogDto;
 import kafkaapp.logger.models.LogDtoOutgoing;
 import kafkaapp.logger.models.LogItem;
+import kafkaapp.logger.models.ServiceNameDto;
 import kafkaapp.logger.service.LogService;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,7 +44,7 @@ public class LogController {
     }
 
     @GetMapping("/services")
-    public List<String> getLogsFromServices() {
-        return logService.getServiceNames();
+    public ServiceNameDto getLogsFromServices() {
+        return new ServiceNameDto(logService.getServiceNames());
     }
 }
