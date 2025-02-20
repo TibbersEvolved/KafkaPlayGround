@@ -4,5 +4,22 @@ spring:
   kafka:
     consumer:
       auto-offset-reset: earliest
+  sql:
+    init:
+      platform: postgresql
+      mode: always
+
+  output:
+    ansi:
+      enabled: always
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://ep-frosty-cloud-a9q7gg4t-pooler.gwc.azure.neon.tech/LoggerDb?user=LoggerDb_owner&password=npg_pYwv2iazng8X&sslmode=require}
+
+  jpa:
+    show-sql: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
 server:
   port: 8090
