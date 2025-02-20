@@ -12,7 +12,7 @@ export default function Healthcare() {
         </div>
         <section className="flex ml-6 mr-6 justify-center gap-6">
             <Service name="Logger" url={apiLoggerUrl}/>
-            <Service name="Playground" url={apiPlayground}/>
+            <Service name="Greeter Service" url={apiPlayground}/>
         </section>
         </section>
         </>
