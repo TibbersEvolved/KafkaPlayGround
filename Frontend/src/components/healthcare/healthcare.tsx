@@ -1,5 +1,8 @@
 import Service from "./service";
 
+const apiLoggerUrl = "http://localhost:8090/api/ping"
+const apiPlayground = "http://localhost:8080/api/ping"
+
 export default function Healthcare() {
     return (
         <>
@@ -8,10 +11,8 @@ export default function Healthcare() {
         <header className="mb-5 text-2xl">App Health</header>
         </div>
         <section className="flex ml-6 mr-6 justify-center gap-6">
-            <Service name="AutoPod"/>
-            <Service name="Dark Web"/>
-            <Service name="Greeter"/>
-            <Service name="Math Service"/>
+            <Service name="Logger" url={apiLoggerUrl}/>
+            <Service name="Playground" url={apiPlayground}/>
         </section>
         </section>
         </>
