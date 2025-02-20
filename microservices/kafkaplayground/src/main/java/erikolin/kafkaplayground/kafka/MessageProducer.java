@@ -33,4 +33,11 @@ public class MessageProducer {
         final String json = mapper.writeValueAsString(dto);
         template.send("logging", id.toString(), json);
     }
+
+    public void logError(String message) throws JsonProcessingException {
+        UUID id = UUID.randomUUID();
+        LogDto dto = new LogDto(id,message,400, LocalDateTime.now(), SERVICE_NAME);
+        final String json = mapper.writeValueAsString(dto);
+        template.send("logging", id.toString(), json);
+    }
 }

@@ -34,7 +34,6 @@ function RootComponent() {
       </div>
       <hr />
       <Outlet />
-      <TanStackRouterDevtools position="bottom-right" />
       </QueryClientProvider>
     </>
   )

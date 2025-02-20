@@ -8,7 +8,7 @@ export default function Healthcare() {
         <>
         <section className="border-sky-900 border-2 pb-10 ml-4 mr-4 mt-3 rounded-md shadow-md">
         <div className="flex justify-center">
-        <header className="mb-5 text-2xl">App Health</header>
+        <header className="mb-5 text-2xl pt-2">App Health</header>
         </div>
         <section className="flex ml-6 mr-6 justify-center gap-6">
             <Service name="Logger" url={apiLoggerUrl}/>

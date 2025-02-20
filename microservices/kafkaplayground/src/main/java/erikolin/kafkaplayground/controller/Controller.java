@@ -2,6 +2,7 @@ package erikolin.kafkaplayground.controller;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import erikolin.kafkaplayground.exceptions.StringToLongException;
 import erikolin.kafkaplayground.kafka.MessageProducer;
 import erikolin.kafkaplayground.model.Greeting;
 import erikolin.kafkaplayground.service.GreetingService;
@@ -26,6 +27,9 @@ public class Controller {
 
     @GetMapping("/greet/{id}")
     public ResponseEntity<DemoResponse> greetUser(@PathVariable String id) throws JsonProcessingException {
+        if (id.length() > 20) {
+            throw new StringToLongException("The name is too long, max 20 characters");
+        }
         Greeting greeting = greetingService.greetUser(id);
         messageProducer.send(greeting);
         return ResponseEntity.ok(new DemoResponse(greeting.getMessage(), greeting.getUser(), LocalDateTime.now().toString()));
