@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: purchaseOrder
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
+server:
+  port: 8081
