@@ -7,12 +7,12 @@ export default function Service(props : prop) {
         queryFn: () => pingHealth(props.url)
       });
       if (isLoading)
-        return <div className="bg-amber-300 border-2 rounded-sm shadow-md p-2">{props.name}</div>;
-      if (isError) return <div className="bg-red-600 border-2 rounded-sm shadow-md p-2">{props.name}</div>;
+        return <div className="bg-amber-100 border-2 rounded-sm shadow-md p-2">{props.name}</div>;
+      if (isError) return <div className="bg-red-400 border-2 rounded-sm shadow-md p-2">{props.name}</div>;
 
 return (
     <>
-    <div className="bg-green-500 border-2 rounded-sm shadow-md p-2">{props.name}</div>
+    <div className="bg-green-400 border-2 rounded-sm shadow-md p-2">{props.name}</div>
     </>
 )
 }

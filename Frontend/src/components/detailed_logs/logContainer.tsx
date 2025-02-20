@@ -17,7 +17,7 @@ export default function LogContainer() {
       return (
         <>
         <section>
-          <header className="flex gap-5 mb-2 p-0.5 border-solid border-sky-900 border-2 bg-slate-100">
+          <header className="flex gap-5 mb-2 p-2 border-solid border-sky-900 border-2 bg-slate-100 rounded-md shadow-sm">
         <div>Filter:</div>
         <LogSelectService/>
         </header>
