@@ -24,13 +24,18 @@ public class Controller {
         this.messageProducer = messageProducer;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/greet/{id}")
     public ResponseEntity<DemoResponse> greetUser(@PathVariable String id) throws JsonProcessingException {
         Greeting greeting = greetingService.greetUser(id);
         messageProducer.send(greeting);
         return ResponseEntity.ok(new DemoResponse(greeting.getMessage(), greeting.getUser(), LocalDateTime.now().toString()));
     }
 
-    
+    @GetMapping("/ping")
+    public ResponseEntity<String> ping() {
+        return ResponseEntity.ok(LocalDateTime.now().toString());
+    }
+
+
 
 }
