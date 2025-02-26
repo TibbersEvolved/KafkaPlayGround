@@ -2,8 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchLogItems } from "./fetchCalls";
 import Logitem from "./logitem";
 import LogSelectService from "./logSelectService";
+import { useState } from "react";
 
 export default function LogContainer() {
+    const [select, setSelect] = useState("All");
     const { data, isLoading, isError } = useQuery({
         queryKey: ["loadLogs"],
         queryFn: () => fetchLogItems()

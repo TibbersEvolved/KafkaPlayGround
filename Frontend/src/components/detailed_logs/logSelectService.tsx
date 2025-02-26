@@ -9,6 +9,8 @@ export default function LogSelectService() {
         queryFn: () => fetchServiceNames()
       });
 
+      
+
       if (isLoading)
         return <div>Loading...</div>;
       if (isError) return <div>Server Error</div>;
@@ -23,4 +25,8 @@ export default function LogSelectService() {
       }
       </select>
       </>)
+}
+
+type props = {
+  cb : (s : string) => void
 }
