@@ -2,8 +2,10 @@
 const urlLogging = "http://localhost:8090/api"
 
 
-export function fetchLogItems() {
+export function fetchLogItems(filter : string) {
+    if(filter === "All")
     return fetch(urlLogging).then(s => s.json())
+    return fetch(urlLogging+"/services/" + filter).then(s => s.json())
 }
 
 export function fetchLogItemsByService(serviceName : string) {
