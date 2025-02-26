@@ -16,7 +16,7 @@ export default function LogSelectService(prop : props) {
         return <div>Loading...</div>;
       if (isError) return <div>Server Error</div>;
       
-      const change = (someValue) => {
+      const change = (someValue : ChangeEvent<HTMLSelectElement>) => {
         const val : string = someValue.target.value
         prop.cb(val);
       }
@@ -24,7 +24,7 @@ export default function LogSelectService(prop : props) {
 
       return (<>
       <select name="service" className="border-2 border-solid border-sky-900 rounded-md shadow-sm bg-amber-200"
-      onChange={(s) => change(s)}>
+      onChange={(s : ChangeEvent<HTMLSelectElement>) => change(s)}>
       <option value="All">All</option>
       {
         data.services.map((res : string, key : number) => {
