@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchLogItems } from "./fetchCalls";
 import { logDataItem } from "./logContainer";
 import Logitem from "./logitem";
+import UtilityLoader from "../utility/utilityLoader";
 
 export default function LogList(prop : props) {
     console.log("Id Filter: " + prop.logFilter)
@@ -11,7 +12,13 @@ export default function LogList(prop : props) {
       });
 
             if (isLoading)
-              return <div>Loading...</div>;
+              return (<>
+              <div className="flex flex-col gap-2 border-2 border-b-blue-950 p-4 rounded-md shadow-sm bg-slate-100">
+                <div>Loading logs...</div>
+                <UtilityLoader/>
+              </div>
+              </>)
+             ;
             if (isError) return <div>Server Error</div>;
             const array : logDataItem[] = data;
 
